@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4B3F50">
+  <title>Beyond the Jar — Votre aventure</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Aller au contenu</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#accueil"><span class="brand-mark" aria-hidden="true">b<span>j</span></span><span>Beyond the Jar<small>Un papier. Une aventure.</small></span></a>
+      <nav class="navigation" aria-label="Navigation principale">
+        <a href="#accueil" aria-current="page" data-icon="home">Accueil</a>
+        <a href="#missions" data-icon="ticket">Missions</a>
+        <a href="#progression" data-icon="chart">Progression</a>
+        <a href="#recompenses" data-icon="gift">Récompenses</a>
+      </nav>
+      <div class="sidebar-note"><span class="eyebrow">À VOTRE RYTHME</span><p>Les petites aventures<br>font les belles histoires.</p><span class="note-line"></span><small>150 missions à vivre.</small></div>
+      <button class="demo-button" id="about-button" data-icon="info">À propos de cette maquette</button>
+    </aside>
+    <main id="main">
+      <header id="accueil" class="page-header">
+        <div><p class="eyebrow desktop-only">BEYOND THE JAR</p><h1><span class="desktop-title">Votre tableau de bord</span><span class="mobile-title">Beyond the Jar</span></h1><p class="date">Jeudi 27 août 2026</p></div>
+        <button class="icon-button" id="menu-button" aria-label="Options de la maquette" data-icon="more"></button>
+      </header>
+      <section class="adventure" aria-labelledby="adventure-title">
+        <div class="adventure-copy"><h2 class="eyebrow" id="adventure-title">VOTRE AVENTURE</h2><div class="metric"><strong id="completed-count">18</strong><span>/ 150</span></div><p class="metric-caption">missions accomplies</p></div>
+        <div class="adventure-action"><div class="progress-label"><span>Chaque mission compte.</span><strong id="percent">12 %</strong></div><progress id="global-progress" max="150" value="18" aria-label="Progression globale">18 sur 150</progress><button class="primary" id="add-button" data-icon="plus">Enregistrer une mission révélée</button></div>
+      </section>
+      <section class="missions-section" id="missions" aria-labelledby="missions-title">
+        <div class="section-heading"><div><h2 id="missions-title">Missions en cours <span class="count" id="active-count">3</span></h2><p class="desktop-only">Votre prochaine aventure est déjà entre vos mains.</p></div><button class="text-button" id="show-all">Voir les 3 <span aria-hidden="true">↗</span></button></div>
+        <div class="mission-grid" id="mission-grid"></div>
+        <p class="empty" id="empty-state" hidden>Toutes vos missions révélées sont accomplies. La suite vous attend dans la jarre.</p>
+      </section>
+      <div class="lower-grid">
+        <section class="reward-section" id="recompenses" aria-labelledby="reward-title">
+          <div class="section-heading"><h2 id="reward-title">Récompenses</h2><button class="text-button" id="all-rewards">Voir toutes les récompenses</button></div>
+          <p class="reward-total" id="reward-total" role="status"><strong>0 / 15</strong> récompenses obtenues</p>
+          <button class="reward-card" id="reward-button"><span class="reward-icon" data-icon="gift" aria-hidden="true"></span><span class="reward-copy"><span class="badge">RÉCOMPENSE DISPONIBLE</span><strong>Un petit bonheur vous attend.</strong><span>Exploration · palier 10 atteint</span></span><span class="round-arrow" data-icon="arrow" aria-hidden="true"></span></button>
+          <p id="closest-reward" class="closest-reward" role="status"></p>
+          <p class="reward-note desktop-only">Tirez votre récompense dans la jarre,<br>puis venez la noter ici.</p>
+        </section>
+        <section id="progression" class="category-section" aria-labelledby="categories-title"><div class="section-heading"><h2 id="categories-title">Progression</h2><span class="subtle">5 catégories</span></div><p class="milestone-explanation">Une récompense à 10, 20 et 30 missions accomplies dans chaque catégorie.</p><div class="category-list" id="category-list"></div></section>
+      </div>
+      <footer class="page-footer"><span>Les aventures se vivent dehors. Les souvenirs restent ici.</span><button id="reset-button">Réinitialiser la démo</button></footer>
+    </main>
+  </div>
+  <dialog id="mission-dialog" aria-labelledby="mission-dialog-title"><button class="dialog-close icon-button" aria-label="Fermer" data-close data-icon="close"></button><div id="mission-detail"></div></dialog>
+  <dialog id="add-dialog" aria-labelledby="add-title"><button class="dialog-close icon-button" aria-label="Fermer" data-close data-icon="close"></button><p class="eyebrow">UN NOUVEAU PAPIER, UNE NOUVELLE HISTOIRE</p><h2 id="add-title">Votre mission révélée</h2><p class="dialog-intro">Vous avez tiré un papier dans la jarre ? Notez votre mission pour la retrouver ici.</p><form id="add-form"><label for="title">Intitulé de la mission</label><input id="title" name="title" required maxlength="100" placeholder="Ex. Découvrir un sentier inconnu"><div class="form-row"><div><label for="category">Catégorie</label><select id="category" name="category"></select></div><div><label for="difficulty">Difficulté</label><select id="difficulty" name="difficulty"><option value="1">1 étoile</option><option value="2">2 étoiles</option><option value="3" selected>3 étoiles</option><option value="4">4 étoiles</option><option value="5">5 étoiles</option></select></div></div><label for="reveal-date">Date du tirage</label><input id="reveal-date" name="date" type="date" required><label for="notes">Quelques notes <span class="subtle">(facultatif)</span></label><textarea id="notes" name="notes" rows="3" maxlength="1000" placeholder="Une idée, un lieu, quelqu’un avec qui la vivre…"></textarea><p class="form-note">Démo : les modifications disparaissent au rechargement.</p><button class="primary" type="submit" data-icon="plus">Enregistrer la mission</button></form></dialog>
+  <dialog id="rewards-history" aria-labelledby="rewards-history-title"><button class="dialog-close icon-button" aria-label="Fermer" data-close data-icon="close"></button><p class="eyebrow">VOS PETITS BONHEURS</p><h2 id="rewards-history-title">Toutes les récompenses</h2><p class="dialog-intro">Retrouvez vos récompenses à tirer, à savourer et déjà utilisées.</p><div class="status-filters reward-filters" role="group" aria-label="Statut des récompenses"><button data-reward-status="available" aria-pressed="true">À tirer</button><button data-reward-status="drawn" aria-pressed="false">À utiliser</button><button data-reward-status="used" aria-pressed="false">Utilisées</button></div><p id="reward-history-count" class="filter-summary" role="status"></p><div id="reward-history-list"></div><p class="form-note">Démo : les tirages et utilisations restent dans cet onglet jusqu’au rechargement.</p></dialog>
+  <dialog id="reward-dialog" aria-labelledby="reward-dialog-title"><button class="dialog-close icon-button" aria-label="Fermer" data-close data-icon="close"></button><p class="eyebrow">EXPLORATION · 10 MISSIONS ACCOMPLIES</p><h2 id="reward-dialog-title">Votre récompense vous attend</h2><p class="dialog-intro">Le contenu reste une surprise jusqu’au tirage physique. Après avoir tiré le papier, notez ce qu’il vous réserve.</p><form id="reward-form"><label for="reward-name">Récompense tirée</label><input id="reward-name" required maxlength="100" placeholder="Ce qui était écrit sur le papier"><p class="form-note">Simulation uniquement, sans sauvegarde.</p><button type="submit" class="primary">Enregistrer le tirage</button></form><div id="reward-result" hidden></div></dialog>
+  <dialog id="about-dialog" aria-labelledby="about-title"><button class="dialog-close icon-button" aria-label="Fermer" data-close data-icon="close"></button><p class="eyebrow">PROTOTYPE INTERACTIF</p><h2 id="about-title">Une première aventure visuelle</h2><p class="dialog-intro">Explorez le tableau de bord, ouvrez une mission ou simulez un nouveau tirage. Les données sont fictives et restent uniquement dans cet onglet.</p><p>Cette maquette reprend les fondations Figma : Manrope, prune fumée, couleurs pastel et cartes en forme de tickets.</p><button class="primary" data-close>Revenir à l’aventure</button></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><p>Activez JavaScript pour explorer cette maquette interactive.</p></noscript>
+</body>
+</html>
