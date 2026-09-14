@@ -236,3 +236,19 @@ Choose the desktop technology later through a small technical prototype.
 - Write commit messages in English.
 - Follow the Conventional Commits specification for every commit.
 - Keep commits focused and describe the user-visible or architectural intent.
+
+## Backend learning and initial implementation scope
+
+- When development starts, implement only the NestJS foundation and a small set of first example routes. Do not build the entire backend in the initial iteration.
+- Keep that first slice runnable and understandable, then let the user review it and take over if desired before expanding backend functionality.
+- Agree on the first routes when implementation begins; this decision does not start development or change the validated architecture.
+- Prioritize readable code: descriptive English names, consistent formatting and whitespace, short focused functions, and straightforward control flow. Avoid unnecessary abbreviations and abstractions.
+- Document setup, run and test commands, the folder structure, and the purpose of NestJS modules, controllers, services, and dependency injection as they appear in this first slice.
+- Walk through one request from route to service and response, with example requests, responses, validation errors, and instructions for adding another route.
+- Use focused comments to explain intent and unfamiliar framework concepts without narrating every line. Keep documentation aligned with the implemented code and explicitly identify deferred functionality.
+
+## Code readability across frontend and backend
+
+- Apply the same readability standards to Angular frontend and NestJS backend code: descriptive English names, consistent indentation, whitespace between logical blocks, and short focused functions.
+- Write all code comments in English. Explain intent, non-obvious decisions, and unfamiliar framework concepts where useful; avoid comments that merely repeat the code.
+- Keep frontend components, templates, styles, and services straightforward and easy for the user to understand, modify, and take over.
