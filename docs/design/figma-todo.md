@@ -75,3 +75,21 @@ Temporary design tasks. Last resumed: 2026-09-07.
 - Created nodes: `31:24`, `31:25`, `31:26`, `31:27`, `31:28`. Mutated: `13:3`, `13:37`, `13:41`, `13:2`, `13:44`.
 - The next screenshot call hit the Figma MCP Starter limit. Changes were confirmed by the successful write response but have NOT been visually verified.
 - Next: screenshot `31:24` and the mobile screen; complete category progression, proper vector controls and age badge, then desktop and reward history views. The history text currently has no prototype interaction.
+
+## Figma verification — 2026-09-15
+
+- Successfully inspected a 2x screenshot of Rewards section `31:24`: heading, total, available reward, nearest reward, and history entry are visible without overlap.
+- Visual differences from the HTML prototype remain: the card needs its gift SVG with a localized gold halo, the invitation text, smaller badge typography, and a vector arrow.
+- The attempted card refinement was rejected by the Starter MCP tool limit; no design changes were applied in this session.
+- Resume with the reward card refinement, then category progression and the outstanding mobile, desktop, and history work listed above.
+
+## Figma synchronization — 2026-09-21
+
+- Updated mobile reward card `13:37` with the prototype gift SVG, localized gold halo, invitation text, smaller badge, and vector arrow. Screenshot inspected successfully.
+- Reward nodes created: `33:24` invitation; `33:25` gift container; `33:26` gift SVG with descendants `33:27`–`33:29`; `33:30` arrow SVG with descendant `33:31`. Mutated existing card children `13:38`–`13:43`.
+- Created reusable component `34:24` (Category progress / Row), with descendants `34:25`–`34:31`. Text properties: `Category#34:0`, `Count#34:1`. Main component screenshot inspected successfully.
+- Added mobile progression section `35:24`, heading `35:25`, explanation `35:26`, and instances `35:27`, `35:35`, `35:43`, `35:51`, `35:59`. Counts are 10, 3, 2, 2, 1 out of 30. Component uses existing category color variables and Manrope text styles.
+- Mobile frame `13:2` resized to 390 x 1499 and navigation `13:44` moved accordingly.
+- IMPORTANT: progression screenshot FAILED visual QA. Instance bars appear at the base one-third width despite attempted per-instance width overrides; Exploration paints also appear missing in the section screenshot. Investigate actual persisted dimensions, paints, and renderer behavior before relying on this section. Do not mark progression complete. Consider explicit component variants if instance geometry overrides do not persist.
+- The next read to inspect these properties was rejected by the Starter MCP limit; further fixes could not be applied.
+- Priority next: correct and re-screenshot `35:24`, check full mobile frame for spacing and fonts, then resume mobile carousel/age controls, desktop, and reward-history screens.

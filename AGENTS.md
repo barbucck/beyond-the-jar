@@ -142,7 +142,7 @@ beyond-the-jar/
 
 - Use the latest stable Angular version available when implementation begins.
 - Build a PWA.
-- Use Tailwind CSS following the current Angular-compatible setup at implementation time.
+- Use Tailwind CSS following the current Angular-compatible setup at implementation time. Apply the existing smoky plum brand, category colors, gray reward surfaces, and typography through centralized theme tokens.
 - UI is client-rendered; no SSR requirement has been identified.
 
 ### API
@@ -252,3 +252,12 @@ Choose the desktop technology later through a small technical prototype.
 - Apply the same readability standards to Angular frontend and NestJS backend code: descriptive English names, consistent indentation, whitespace between logical blocks, and short focused functions.
 - Write all code comments in English. Explain intent, non-obvious decisions, and unfamiliar framework concepts where useful; avoid comments that merely repeat the code.
 - Keep frontend components, templates, styles, and services straightforward and easy for the user to understand, modify, and take over.
+
+## Frontend theme and design tokens
+
+- Use Tailwind CSS with the project theme while preserving the approved Beyond the Jar visual identity.
+- Centralize primitive values and semantic tokens in the theme/token definitions. Application CSS/SCSS and component styles must consume tokens rather than embed color or size values.
+- Do not use literal pixel values or hexadecimal color values in application styles. Do not substitute other literal color formats or ad hoc rem values to bypass this rule.
+- Define dimension primitives centrally using relative units, and expose named tokens for spacing, typography, radii, borders, control sizes, and layout dimensions. Keep raw palette values confined to the centralized theme definitions.
+- Map centralized tokens to the Tailwind theme and use token-backed utilities. Define project-specific semantic tokens for category colors, rewards, and layout needs. Do not bypass the token rules with arbitrary color or dimension values in utility classes.
+- Document token names, their purpose, and how to change the theme. These rules apply to the upcoming application implementation; the existing HTML prototype remains a design reference.
